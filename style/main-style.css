@@ -1,0 +1,192 @@
+:root{
+    --base-black: rgba(0, 0, 0);
+    --base-white: rgba(255, 255, 255);
+    --base-accent:rgba(245, 163, 69);
+    --basik-foon-sky-blue:rgba(1, 106, 255);
+    --basik-footer:rgba(245, 163, 69);
+    --basik-green:rgba(27, 179, 77);
+
+    --second-foon:rgb(51, 120, 216);
+
+}
+
+@font-face {
+    font-family: "rlragd94-webfont";  
+    src: url("../fonts/rlragd94-webfont.woff") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal;
+}
+
+
+.page{
+    height: 100%;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    min-width: 1160px;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    align-content: start;
+
+    /*color: var(--base-white);*/
+    font-family: 'Open Sans';
+    font-size: 16px;
+    background: linear-gradient(180deg, var(--basik-foon-sky-blue), var(--base-white));;
+}
+h1, h2, h3{
+    font-family: 'rlragd94-webfont';
+}
+
+a{
+    text-decoration: none;
+    color: var(--basic-black);
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.container{
+    width: 1160px;
+    margin: 0px auto;
+
+}
+
+.btn-main{
+    background-color: transparent;
+    border: solid 4px var(--base-white);
+    color: var(--base-white);
+    height: 37px;
+    width: 170px;
+
+    font-size: 18px;
+    font-family:'rlragd94-webfont';
+}
+.btn-img{
+    padding: 0px;
+    border: 0px;
+    background-color: transparent;
+}
+.sky-fon-img{
+    background: url(../img/clouds.png) no-repeat;
+    background-size: contain;
+    display: grid;
+    grid-template-rows:  min-content 1fr;
+}
+
+.header-content{
+    margin: 40px 10px;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+}
+.content-name-game{
+    margin: 0 auto;
+    text-align: center;
+    color: var(--base-white);
+}
+.icon-personal-area{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.icon-person-area-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.content-game-interface{
+    
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.game-dysplay{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+.footer-content{
+    margin-top: 0px;
+    height: 180px;
+    background-color: var(--basik-footer);
+}
+.line-green{
+    height: 15px;
+    background-color: var(--basik-green) ;
+}
+.wizard{
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+.wizard-fair{
+    position:relative;
+    margin: 0px;
+    padding: 0px;
+}
+
+.img-wizard{
+    position:absolute;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    top: 0px;
+}
+.img-fair-ball{
+    position:absolute;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    top: 0px;
+}
+
+.modal_profil{
+    
+    position: fixed;
+    width: 600px;
+    height: 350px;
+    padding: 20px;
+
+    border: solid 5px;
+    border-color: var(--base-white);
+    color: var(--base-white);
+    background-color: var(--second-foon);
+}
+
+.btn-close-modal{
+    margin: 10px;
+}
+
+.header-modal-profil{
+    display: grid;
+    grid-template-columns: 1fr max-content;
+}
+
+.icon-user-profil{
+    width: 100px;
+    height: 100px;
+    margin: 0px  20px 10px 20px;
+}
+.icon-user-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.content-profil{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+.img-fair-ball{
+    
+}

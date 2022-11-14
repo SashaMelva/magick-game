@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Код и магия</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="style/main-style.css">
+    <link rel="stylesheet" href="style/normolize.css">
+
+<!--
+    <link rel="preload" href="fonts/rlragd94-webfont.eot" as="font">
+    <link rel="preload" href="fonts/rlragd94-webfont.svg" as="font">
+    <link rel="preload" href="fonts/rlragd94-webfont.ttf" as="font">
+    <link rel="preload" href="fonts/rlragd94-webfont.woff" as="font">
+    <link rel="preload" href="fonts/rlragd94-webfont.woff2" as="font">-->
+</head>
+<body>
+    <div class="sky-fon-img container">
+        <header class="container header-content">
+            <div class="content-name-game">
+                <p>Игра находится на стадии разработке</p>
+                <h1>Code and Magick Game</h1>
+            </div>
+            <div >
+                <button class="icon-personal-area btn-img">
+                    <img class="icon-person-area-image btn-open-modal" src="img/user-1.jpg">
+                </button>
+            </div>
+        </header>
+        <main class="container content-game-interface">
+           <div class="game-dysplay">
+           
+            <div class="wizard-container img-wizard">
+                <div class="wizard-fair">
+                    <img class="wizard"  src="img/wizard.gif">
+                </div>
+            </div>
+           </div>
+
+
+           <section class="modal_profil" role="dialog" aria-modal="true">
+            
+            <div class="header-modal-profil">
+                <h2>Your profile</h2>
+                <button class="btn-close-modal btn-img">
+                    <img src="img/icon-cross.png">
+                </button> 
+            </div>
+            <div class="content-profil">
+                <div class="icon-user-content">
+                    <img class="icon-person-area-image icon-user-profil" src="img/user-1.jpg">
+                    <a>Изменить аватарку</a>
+                </div>
+                <button class="btn-main">Log Out</button>
+            </div>
+           </section>
+        </main>
+    </div>
+    <footer class="footer-content">
+        <div class="line-green"></div>
+        
+    </footer>
+    <script src="js/game.js"></script>
+    <script src="js/main-js.js"></script>
+    <script>
+        /*let canvas = document.querySelector(".canvas")
+        var ctx = canvas.getContext('2d');*/
+
+    </script>
+    <script>
+        document.querySelector(".modal_profil").hidden = true;
+        document.querySelector(".btn-open-modal").onclick = function (){
+            document.querySelector(".modal_profil").hidden = false;
+        }
+        document.querySelector(".btn-close-modal").onclick = function (){
+            document.querySelector(".modal_profil").hidden = true;
+        }
+        
+        window.onload = function(){
+            let wizard = document.querySelector(".img-wizard");
+            var dysplay = document.querySelector(".game-dysplay");
+
+            wizard.style.top = Math.round(dysplay.clientHeight) - Math.round(wizard.clientHeight) + "px";
+            wizard.style.left =  Math.round(dysplay.clientWidth / 2) + "px";
+
+        }
+        
+
+       
+
+
+
+        function moveRect(e){
+            let dysplay = document.querySelector(".game-dysplay");
+            let wizard = document.querySelector(".img-wizard");
+
+            let wizard_img = document.querySelector(".wizard");
+            
+            // получаем стиль для blueRect
+            //var style_wizard = window.getComputedStyle(blueRect);
+            /*let left_wizard = wizard.
+            let button =*/
+            switch(e.key){
+                
+                case "ArrowLeft":  // если нажата клавиша влево
+                        wizard_img.src = "img/wizard-reversed.gif";
+                        wizard.style.left = wizard.offsetLeft - 15 + "px";
+                    break;
+                case "ArrowUp":   // если нажата клавиша вверх
+                    if(wizard.offsetTop > 0){
+                        wizard.style.top = wizard.offsetTop - 15 + "px";
+                    }
+                    break;
+
+                case "ArrowRight":   // если нажата клавиша вправо
+
+                   //if(left < document.documentElement.clientWidth - 100){
+                        wizard_img.src = "img/wizard.gif";
+                        wizard.style.left = wizard.offsetLeft + 15 + "px";
+                   // }
+                    
+                    break;
+                case "ArrowDown":   // если нажата клавиша вниз
+                    if(wizard.offsetTop   <= Math.round(dysplay.clientHeight) - Math.round(wizard.clientHeight)){
+                        wizard.style.top = wizard.offsetTop + 15 + "px";
+                    }
+                    break;
+            }
+
+        }
+  
+        addEventListener("keydown", moveRect);
+
+        function fairBallPush(e){
+            let dysplay = document.querySelector(".game-dysplay");
+            let wizard = document.querySelector(".wizard");
+            let wizard_img = document.querySelector(".img-wizard");
+
+
+            if( e.code === 'Enter' ){
+                let image_ball = document.createElement('img');
+                image_ball.src = "img/fireball.gif";
+                image_ball.classList.add("img-fair-ball");
+
+                document.querySelector('.wizard-fair').appendChild(image_ball);
+
+
+                let requestId;
+                let [positionX, ] =[0, 0];
+                const [maxPsitionX,] = [dysplay.offsetWidth - wizard_img .offsetLeft, 0]
+                function move(){
+                    
+                    positionX = positionX > maxPsitionX ? 0 : positionX + 2;
+                    image_ball.style.transform = 'translateX('+ positionX + 'px)';
+                    requestId = window.requestAnimationFrame(move);
+                }
+
+                requestId = window.requestAnimationFrame(move);
+
+
+                /*
+                if(wizard.src === "http://localhost:8080/img/wizard.gif"){
+                    image_ball.style.left = "40px";
+
+                    animate({
+                        duration: 2000,
+                        timing: makeEaseOut(quad),
+                        draw: function(progress) {
+                            image_ball.style.left = width * progress + "px"
+                        }
+                    })
+                }
+                let width = 100;
+                animate({
+                        duration: 2000,
+                        timing: makeEaseOut(quad),
+                        draw: function(progress) {
+                            image_ball.style.left = width * progress + "px"
+                        }
+                    });
+
+                    animate();
+                alert(wizard.src)
+
+                /*
+                var wizard = document.querySelector(".img-wizard");
+                let coords_wizard = wizard.getBoundingClientRect();
+                let start_fir_ball_top = coords_wizard.top +  Math.round(coords_wizard.height / 2);
+                let start_fir_ball_left = coords_wizard.left;
+                alert(start_fir_ball_left);
+
+
+                image_ball.style.top = start_fir_ball_top + "px";
+                image_ball.style.left = start_fir_ball_left + "px";*/
+            }
+        }
+        addEventListener("keydown", fairBallPush);
+
+    </script>
+</body>
+</html>
